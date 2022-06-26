@@ -7,7 +7,7 @@ from .forms import PostForm
 
 class home(ListView):
     model = post
-    template_name = 'home.html'
+    template_name = 'index.html'
     ordering = ['-id']
 
 
