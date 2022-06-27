@@ -8,7 +8,7 @@ from .forms import PostForm
 class home(ListView):
     model = post
     template_name = 'index.html'
-    ordering = ['-id']
+    ordering = ['-post_date']
 
 
 class ArticleDetailView(DetailView):

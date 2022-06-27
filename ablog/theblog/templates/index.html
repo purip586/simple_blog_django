@@ -5,17 +5,21 @@
 <h1>Our <span class="text-primary">Blog</span> Posts</h1>
 <hr><br>
 
-<ul>
+<div class="container d-flex flex-column gap-5">
     {% for post in object_list %}
-    <li><a href="{% url 'article-detail' post.pk %}"> {{post.title}}</a> - {{post.author.first_name}}
-        {{post.author.last_name}} - <small>
+    <li style="list-style: none;">
+        <a href="{% url 'article-detail' post.pk %}"> {{post.title}}</a> -
+        {{post.author.first_name}}
+        {{post.author.last_name}} -
+        <small>
+            {{post.post_date}} -
             <a href="{% url 'update_post' post.pk %}">[Edit]</a>
             <a href="{% url 'delete_post' post.pk %}">[Delete]</a>
         </small>
         <br>
-        {{post.body}}
+        {{post.body|slice:":300"|safe}}
     </li>
     {% endfor %}
-</ul>
+</div>
 
 {% endblock %}
