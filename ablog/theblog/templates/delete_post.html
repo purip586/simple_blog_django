@@ -6,6 +6,8 @@
 <hr>
 <br>
 
+{% if user.is_authenticated%}
+
 <h3>Delete: {{ post.title }}</h3>
 <br>
 
@@ -19,6 +21,12 @@
         <button class="btn btn-danger">Delete Post!</button>
     </form>
 </div>
+
+{% else %}
+
+<h2 class="text-danger">Please Login To Continue...</h2>
+
+{% endif %}
 
 
 {% endblock %}

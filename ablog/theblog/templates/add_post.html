@@ -6,6 +6,8 @@
 <hr>
 <br>
 
+{% if user.is_authenticated %}
+
 <div class="form-container">
     <form action="" method="POST">
         {% csrf_token %}
@@ -15,6 +17,12 @@
 
     </form>
 </div>
+
+{% else %}
+
+<h2 class="text-danger">Please Login To Continue...</h2>
+
+{% endif %}
 
 
 {% endblock %}
