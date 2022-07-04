@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Our <span class="text-primary">Blog</span> Posts</h1>
+<hr><br>
+
+<div class="container d-flex flex-column gap-5">
+    {% for post in object_list %}
+    <li style="list-style: none;">
+        <a href="{% url 'article-detail' post.pk %}"> {{post.title}}</a> -
+        {{post.author.first_name}}
+        {{post.author.last_name}} -
+        <small>
+            {{post.post_date}}
+            {% if user.is_authenticated %}
+            <a href="{% url 'update_post' post.pk %}">[Edit]</a>
+            <a href="{% url 'delete_post' post.pk %}">[Delete]</a>
+            {% endif %}
+        </small>
+        <br>
+        {{post.body|slice:":300"|safe}}
+    </li>
+    {% endfor %}
+</div>
+
+{% endblock %}
